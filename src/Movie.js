@@ -1,15 +1,31 @@
 import React, { Component } from 'react';
 import './Movie.css';
+import PropTypes from 'prop-types';
 
 class Movie extends Component {
+    static propTypes = {
+        title: PropTypes.string.isRequired,
+        poster: PropTypes.string.isRequired
+    }
+
     render(){
         return(
             <div className='Movie'>
-                <h1>극한직업</h1>
-                <img src='https://t1.daumcdn.net/movie/4e00e81f2b6f4d2eb65b3387240cc3c01547608409838'/>
+                <h1>{this.props.title}</h1>
+                <MoviePoster poster={this.props.poster}/>
             </div>
         );
     }
 }
+
+class MoviePoster extends Component {
+    render(){
+        console.log(this.props);
+        return(
+            <img src={this.props.poster} alt=''/>
+        );
+    }
+}
+
 
 export default Movie;
